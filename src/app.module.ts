@@ -15,7 +15,7 @@ import { typeOrmConfig } from './config/typeorm.config';
     UserModule,
     TypeOrmModule.forRoot(typeOrmConfig),
   ],
-  controllers: [AppController, UserController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

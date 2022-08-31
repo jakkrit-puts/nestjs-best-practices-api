@@ -6,20 +6,20 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity({ name: 'tasks' })
-export class Task {
+@Entity({ name: 'users' })
+export class User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  title: string;
+  @Column({ unique: true })
+  username: string;
 
   @Column()
-  description: string;
+  password: string;
 
   @CreateDateColumn()
   created: Date;
 
   @UpdateDateColumn()
-  updated: Date;
+  update: Date;
 }
