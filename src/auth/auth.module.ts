@@ -6,6 +6,7 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { LocalStrategy } from './local/local.strategy';
 import * as config from 'config';
+import { JwtStrategy } from './jwt/jwt.strategy';
 
 const jwtConfig = config.get('jwt');
 @Module({
@@ -18,6 +19,6 @@ const jwtConfig = config.get('jwt');
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy],
 })
 export class AuthModule {}
