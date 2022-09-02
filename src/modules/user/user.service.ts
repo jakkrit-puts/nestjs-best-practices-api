@@ -26,10 +26,7 @@ export class UserService {
 
       return { message: 'User successfully created !' };
     } catch (error) {
-      throw new ConflictException({
-        message: 'Username already exist !.',
-        status_code: 100,
-      });
+      throw new ConflictException();
     }
   }
 
