@@ -23,8 +23,8 @@ export class TaskService {
     return this.taskRepository.save(createTaskDto);
   }
 
-  async update(updateTaskDto: UpdateTaskDto): Promise<Task> {
-    const { id, title, description } = updateTaskDto;
+  async update(id: string, updateTaskDto: UpdateTaskDto): Promise<Task> {
+    const { title, description } = updateTaskDto;
 
     const task = await this.taskRepository.findOne({
       where: {

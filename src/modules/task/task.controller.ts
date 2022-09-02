@@ -19,27 +19,30 @@ import { TaskService } from './task.service';
 export class TaskController {
   constructor(private taskService: TaskService) {}
 
-  @Get()
+  @Get() // GET /task
   findAll(): Promise<Task[]> {
     return this.taskService.findAll();
   }
 
-  @Get(':id')
+  @Get(':id') // GET /task/123
   findTask(@Param('id') id: string): Promise<Task> {
     return this.taskService.findByID(id);
   }
 
-  @Post()
+  @Post() // POST /task
   createTask(@Body() createDto: CreateTaskDto): Promise<Task> {
     return this.taskService.insert(createDto);
   }
 
-  @Put()
-  updateTask(@Body() updateTask: UpdateTaskDto): Promise<Task> {
-    return this.taskService.update(updateTask);
+  @Put(':id') // PUT /task/123
+  updateTask(
+    @Param('id') id: string,
+    @Body() updateTask: UpdateTaskDto,
+  ): Promise<Task> {
+    return this.taskService.update(id, updateTask);
   }
 
-  @Delete(':id')
+  @Delete(':id') // DELETE /task/123
   @HttpCode(204)
   removeTask(@Param('id') id: string): Promise<void> {
     return this.taskService.remove(id);

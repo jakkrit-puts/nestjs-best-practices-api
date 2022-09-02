@@ -14,13 +14,13 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private userService: UserService) {}
 
-  @Post('signup')
+  @Post('signup') // POST /user/signup
   signup(@Body() signupDto: SignupDto) {
     return this.userService.signup(signupDto);
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('me')
+  @Get('me') // GET /user/me
   Profile(@Request() req) {
     return req.user;
   }
