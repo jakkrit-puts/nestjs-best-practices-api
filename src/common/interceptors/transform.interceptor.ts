@@ -13,6 +13,12 @@ export interface Response<T> {
 @Injectable()
 export class TransformInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
-    return next.handle().pipe(map((data) => ({ data })));
+    return next.handle().pipe(
+      map((data) => ({
+        statusCode: context.switchToHttp().getResponse().statusCode,
+        message: data.message || '',
+        result: data,
+      })),
+    );
   }
 }

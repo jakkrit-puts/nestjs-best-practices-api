@@ -4,12 +4,16 @@ import { AppModule } from './app.module';
 import * as config from 'config';
 import { HttpExceptionFilter } from './common/filters/http-exeption.filter';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
+import { TransformInterceptor } from './common/interceptors/transform.interceptor';
 
 async function bootstrap() {
   const opts: NestApplicationOptions = {};
   const app = await NestFactory.create(AppModule, opts);
   app.enableCors();
-  app.useGlobalInterceptors(new LoggingInterceptor());
+  app.useGlobalInterceptors(
+    new LoggingInterceptor(),
+    new TransformInterceptor(),
+  );
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
   app.setGlobalPrefix('api/v1');
