@@ -14,7 +14,6 @@ import { CreateTaskDto } from './dto/cretae-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
 import { Task } from './entity/task.entity';
 import { TaskService } from './task.service';
-import { Request, Response } from 'express';
 @UseGuards(JwtAuthGuard)
 @Controller('task')
 export class TaskController {
