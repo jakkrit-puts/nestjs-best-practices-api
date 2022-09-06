@@ -1,7 +1,11 @@
 # compiled output
 /dist
 /node_modules
-/config
+
+# config
+/config/development.yml
+/config/default.yml
+/config/production.yml
 
 # Logs
 logs
