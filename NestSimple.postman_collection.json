@@ -1,0 +1,300 @@
+{
+	"info": {
+		"_postman_id": "73f8c99e-5deb-4320-8211-e9ad35852e7b",
+		"name": "NestSimple",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15821558"
+	},
+	"item": [
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Get Tasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InV4eDEiLCJzdWIiOiI4Mjc4MTc5Ny0wMjhkLTQ4NDYtOGIwNC1kZjM0MTY0ODQzYTUiLCJpYXQiOjE2NjI0NTEyNDgsImV4cCI6MTY2MjQ1MzA0OH0.YmKYNlSdUqZMlm8CJedGTiq5-wkKTh57JCv7Y2psRjY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/task?limit=2&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Task By ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InUxMTI0Iiwic3ViIjoiZGIxYjgzMmYtYWU5Zi00YjgzLTk5NTQtNGIzMDcxNmU3NDVhIiwiaWF0IjoxNjYyNDQwMDg3LCJleHAiOjE2NjI0NDE4ODd9.Nr-67L8YugqGR3QUnv7Fx5-KTIqSLAOOx02-uHT_R9M",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/task/0e79505a-a51c-4e5e-b26f-e97326da5343o",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task",
+								"0e79505a-a51c-4e5e-b26f-e97326da5343o"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InUxMTI0Iiwic3ViIjoiZGIxYjgzMmYtYWU5Zi00YjgzLTk5NTQtNGIzMDcxNmU3NDVhIiwiaWF0IjoxNjYyNDM5MTI5LCJleHAiOjE2NjI0NDA5Mjl9.ISTux_w_F-rqNbqbxmwaSHQ4eeStUiE_kc2tmXW3DRc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Topic 533\",\r\n    \"description\": \"Detail 533\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/task",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InUxMTI0Iiwic3ViIjoiZGIxYjgzMmYtYWU5Zi00YjgzLTk5NTQtNGIzMDcxNmU3NDVhIiwiaWF0IjoxNjYyNDQwMTg4LCJleHAiOjE2NjI0NDE5ODh9.wW6Tp64eU_JhQdyNjbRRz1bRVLKAf86mvcC9fWK7Z-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"05d4d903-ffb7-47a1-8e91-1e41d7d2ce8c\",\r\n    \"title\":\"Topic 123\",\r\n    \"description\": \"Detail 123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/task/05d4d903-ffb7-47a1-8e91-1e41d7d2ce8c",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task",
+								"05d4d903-ffb7-47a1-8e91-1e41d7d2ce8c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InUxMTI0Iiwic3ViIjoiZGIxYjgzMmYtYWU5Zi00YjgzLTk5NTQtNGIzMDcxNmU3NDVhIiwiaWF0IjoxNjYyNDQwMTg4LCJleHAiOjE2NjI0NDE5ODh9.wW6Tp64eU_JhQdyNjbRRz1bRVLKAf86mvcC9fWK7Z-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/task/05d4d903-ffb7-47a1-8e91-1e41d7d2ce8co",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"task",
+								"05d4d903-ffb7-47a1-8e91-1e41d7d2ce8co"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InUxMTI0Iiwic3ViIjoiZGIxYjgzMmYtYWU5Zi00YjgzLTk5NTQtNGIzMDcxNmU3NDVhIiwiaWF0IjoxNjYyNDQwMTg4LCJleHAiOjE2NjI0NDE5ODh9.wW6Tp64eU_JhQdyNjbRRz1bRVLKAf86mvcC9fWK7Z-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"uxx1\",\r\n    \"password\": \"Aa112233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/signup",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SignIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"uxx112\",\r\n    \"password\": \"Aa112233\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/signin",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		}
+	]
+}
