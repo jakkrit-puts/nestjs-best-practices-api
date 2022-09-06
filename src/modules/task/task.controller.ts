@@ -7,9 +7,11 @@ import {
   Param,
   Post,
   Put,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt/jwt-auth.guard';
+import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto ';
 import {
   CREATE_DATA_SUCCESS,
   GET_DATA_SUCCESS,
@@ -23,10 +25,11 @@ import { TaskService } from './task.service';
 export class TaskController {
   constructor(private taskService: TaskService) {}
 
-  @Get() // GET /task
-  async findAll() {
+  @Get() // GET /task?limit=5&offset=1
+  async findAll(@Query() paginationQuery: PaginationQueryDto) {
+    const { limit, offset } = paginationQuery;
     return {
-      data: await this.taskService.findAll(),
+      data: await this.taskService.findAll(limit, offset),
       message: GET_DATA_SUCCESS,
     };
   }

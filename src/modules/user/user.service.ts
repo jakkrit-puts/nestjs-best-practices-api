@@ -27,9 +27,7 @@ export class UserService {
       password: hashPass,
     });
 
-    await this.userRepository.save(user);
-
-    return { message: 'User successfully created !' };
+    return await this.userRepository.save(user);
   }
 
   async findOneUser(username: string): Promise<User | undefined> {

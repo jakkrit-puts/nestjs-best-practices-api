@@ -12,8 +12,11 @@ export class TaskService {
     @InjectRepository(Task) private taskRepository: Repository<Task>,
   ) {}
 
-  async findAll(): Promise<Task[]> {
-    return this.taskRepository.find();
+  async findAll(limit = 2, offset = 0): Promise<Task[]> {
+    return this.taskRepository.find({
+      skip: offset,
+      take: limit,
+    });
   }
 
   async findByID(id: string): Promise<Task> {
