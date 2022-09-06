@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { NOT_FOUND_DATA } from 'src/shared/message';
 import { Repository } from 'typeorm';
 import { CreateTaskDto } from './dto/cretae-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -16,6 +17,12 @@ export class TaskService {
   }
 
   async findByID(id: string): Promise<Task> {
+    const checkTask = await this.taskRepository.findOne({ where: { id: id } });
+
+    if (!checkTask) {
+      throw new NotFoundException(NOT_FOUND_DATA);
+    }
+
     return this.taskRepository.findOne({ where: { id: id } });
   }
 
@@ -25,6 +32,12 @@ export class TaskService {
 
   async update(id: string, updateTaskDto: UpdateTaskDto): Promise<Task> {
     const { title, description } = updateTaskDto;
+
+    const checkTask = await this.findByID(id);
+
+    if (!checkTask) {
+      throw new NotFoundException(NOT_FOUND_DATA);
+    }
 
     const task = await this.taskRepository.findOne({
       where: {
@@ -39,6 +52,12 @@ export class TaskService {
   }
 
   async remove(id: string): Promise<void> {
+    const checkTask = await this.findByID(id);
+
+    if (!checkTask) {
+      throw new NotFoundException(NOT_FOUND_DATA);
+    }
+
     await this.taskRepository.delete(id);
   }
 }

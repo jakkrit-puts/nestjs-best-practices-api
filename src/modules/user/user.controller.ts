@@ -7,6 +7,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt/jwt-auth.guard';
+import { GET_DATA_SUCCESS } from 'src/shared/message';
 import { SignupDto } from './dto/signup.dto';
 import { UserService } from './user.service';
 
@@ -22,6 +23,6 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Get('me') // GET /user/me
   Profile(@Request() req) {
-    return req.user;
+    return { data: req.user, message: GET_DATA_SUCCESS };
   }
 }

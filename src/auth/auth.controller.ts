@@ -1,4 +1,5 @@
 import { Controller, HttpCode, Post, Request, UseGuards } from '@nestjs/common';
+import { AUTH_SUCCESS } from 'src/shared/message';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local/local-auth.guard';
 
@@ -10,6 +11,9 @@ export class AuthController {
   @Post('signin')
   @HttpCode(200)
   async signin(@Request() req) {
-    return this.authService.signin(req.user);
+    return {
+      data: await this.authService.signin(req.user),
+      message: AUTH_SUCCESS,
+    };
   }
 }

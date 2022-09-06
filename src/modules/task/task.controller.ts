@@ -10,9 +10,13 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt/jwt-auth.guard';
+import {
+  CREATE_DATA_SUCCESS,
+  GET_DATA_SUCCESS,
+  UPDATE_DATA_SUCCESS,
+} from 'src/shared/message';
 import { CreateTaskDto } from './dto/cretae-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
-import { Task } from './entity/task.entity';
 import { TaskService } from './task.service';
 @UseGuards(JwtAuthGuard)
 @Controller('task')
@@ -20,31 +24,40 @@ export class TaskController {
   constructor(private taskService: TaskService) {}
 
   @Get() // GET /task
-  findAll(): Promise<Task[]> {
-    return this.taskService.findAll();
+  async findAll() {
+    return {
+      data: await this.taskService.findAll(),
+      message: GET_DATA_SUCCESS,
+    };
   }
 
   @Get(':id') // GET /task/123
-  findTask(@Param('id') id: string): Promise<Task> {
-    return this.taskService.findByID(id);
+  async findTask(@Param('id') id: string) {
+    return {
+      data: await this.taskService.findByID(id),
+      message: GET_DATA_SUCCESS,
+    };
   }
 
   @Post() // POST /task
-  createTask(@Body() createDto: CreateTaskDto): Promise<Task> {
-    return this.taskService.insert(createDto);
+  async createTask(@Body() createDto: CreateTaskDto) {
+    return {
+      data: await this.taskService.insert(createDto),
+      message: CREATE_DATA_SUCCESS,
+    };
   }
 
   @Put(':id') // PUT /task/123
-  updateTask(
-    @Param('id') id: string,
-    @Body() updateTask: UpdateTaskDto,
-  ): Promise<Task> {
-    return this.taskService.update(id, updateTask);
+  async updateTask(@Param('id') id: string, @Body() updateTask: UpdateTaskDto) {
+    return {
+      data: await this.taskService.update(id, updateTask),
+      message: UPDATE_DATA_SUCCESS,
+    };
   }
 
   @Delete(':id') // DELETE /task/123
   @HttpCode(204)
-  removeTask(@Param('id') id: string): Promise<void> {
-    return this.taskService.remove(id);
+  async removeTask(@Param('id') id: string) {
+    return await this.taskService.remove(id);
   }
 }
